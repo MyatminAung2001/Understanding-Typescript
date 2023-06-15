@@ -8,10 +8,13 @@ const person: {
 
 console.log(person.name);
 
+// Tuple => Fixed length array
+
 const nestedObjects: {
     name: string;
     age: number;
     hobbies: string[];
+    role: [number, string];
     from: {
         country: string;
         city: string;
@@ -20,6 +23,7 @@ const nestedObjects: {
     name: "Myat Min Aung",
     age: 21,
     hobbies: ["swimming, football"],
+    role: [1, "developer"],
     from: {
         country: "Myanmar",
         city: "Yangon",
