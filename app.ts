@@ -1,6 +1,8 @@
+type Combinable = number | string;
+
 function combine(
-    input1: number | string,
-    input2: number | string,
+    input1: Combinable,
+    input2: Combinable,
     resultType: "as-number" | "as-string"
 ) {
     let result;
@@ -28,3 +30,7 @@ console.log(combinedStringAge);
 
 const combinedName = combine("Myatmin", " Aung", "as-string");
 console.log(combinedName);
+
+// type aliases
+type User = { name: string; age: number };
+const u1: User = { name: "Max", age: 30 }; // this works!
