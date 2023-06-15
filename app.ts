@@ -6,7 +6,7 @@ const person: {
     age: 21,
 };
 
-console.log(person);
+console.log(person.name);
 
 const nestedObjects: {
     name: string;
@@ -26,4 +26,11 @@ const nestedObjects: {
     },
 };
 
-console.log(nestedObjects);
+console.log(nestedObjects.age);
+
+let favoriteActivities: string[];
+favoriteActivities = ["Sports"];
+
+for (const hobby of nestedObjects.hobbies) {
+    console.log(hobby);
+}
