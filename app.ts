@@ -38,3 +38,20 @@ favoriteActivities = ["Sports"];
 for (const hobby of nestedObjects.hobbies) {
     console.log(hobby);
 }
+
+// Enum => Automatically enumerated global constant identifiers
+enum Role {
+    ADMIN, // 0
+    AUTHOR, // 1
+    WORKER, // 2
+}
+
+const author = {
+    name: "Myat Min Aung",
+    age: 21,
+    role: Role.ADMIN,
+};
+
+if (author.role === Role.ADMIN) {
+    console.log("A admin");
+}
