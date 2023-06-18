@@ -1,32 +1,27 @@
-let userInput: unknown;
-let userName: string;
+const buttton = document.querySelector("button")!;
 
-userInput = 5;
-userInput = "Myatmin Aung";
-
-if (typeof userInput === "string") {
-    userName = userInput;
+function add(n1: number, n2: number) {
+    if (n1 + n2 > 0) {
+        return n1 + n2;
+    }
+    return;
 }
 
-const processValue = (val: unknown) => {
-    if (typeof val === "string") {
-        console.log(val.toLocaleUpperCase());
-    } else if (typeof val === "number") {
-        console.log(val.toFixed(2));
-    } else {
-        console.log("Unknown Type");
-    }
+function clickHandler(message: string) {
+    console.log("Clicked " + message);
+}
+
+if (buttton) {
+    buttton.addEventListener(
+        "click",
+        clickHandler.bind(null, "You're welcome!")
+    );
+}
+
+const person = {
+    name: "Myatmin Aung",
+    age: 21,
 };
 
-processValue("hello world");
-processValue(34.13);
-processValue(true);
-
-const generateError = (msg: string, status: number): never => {
-    throw {
-        msg,
-        status,
-    };
-};
-
-generateError("Internal Server Error", 500);
+const copiedPerson = { ...person };
+console.log(copiedPerson);
