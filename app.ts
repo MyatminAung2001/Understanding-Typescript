@@ -1,5 +1,5 @@
-class Department {
-    private readonly id: string;
+abstract class Department {
+    protected readonly id: string;
     public name: string;
     protected employees: string[] = [];
 
@@ -12,9 +12,7 @@ class Department {
         return { name };
     }
 
-    describe(this: Department) {
-        console.log(`Department (${this.id}: ${this.name})`);
-    }
+    abstract describe(this: Department): void;
 
     addEmployee(employee: string) {
         this.employees.push(employee);
@@ -52,6 +50,10 @@ class ITDepartment extends Department {
         this.lastReport = reports[0];
     }
 
+    describe() {
+        console.log("IT Department - ID: " + this.id);
+    }
+
     addEmployee(name: string) {
         if (name === "Alex") {
             return;
@@ -81,11 +83,11 @@ it.addEmployee("Alex");
 it.addEmployee("Joe");
 it.addEmployee("Michael");
 
-it.printEmployeeInfo();
+// it.printEmployeeInfo();
 
 it.mostRecentReport = "Something went wrong.";
 it.addReport("this is report one");
 it.addReport("this is report two");
 console.log(it.mostRecentReport);
 
-it.getReports();
+// it.getReports();
