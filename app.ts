@@ -1,27 +1,30 @@
-const buttton = document.querySelector("button")!;
+class Department {
+    public name: string;
+    private employees: string[] = [];
 
-function add(n1: number, n2: number) {
-    if (n1 + n2 > 0) {
-        return n1 + n2;
+    constructor(n: string) {
+        this.name = n;
     }
-    return;
+
+    describe(this: Department) {
+        console.log("Department: " + this.name);
+    }
+
+    addEmployee(employee: string) {
+        this.employees.push(employee);
+    }
+
+    printEmployeeInfo() {
+        console.log(this.employees.length);
+        console.log(this.employees);
+    }
 }
 
-function clickHandler(message: string) {
-    console.log("Clicked " + message);
-}
+const accounting = new Department("Accounting");
+accounting.describe();
 
-if (buttton) {
-    buttton.addEventListener(
-        "click",
-        clickHandler.bind(null, "You're welcome!")
-    );
-}
+accounting.addEmployee("Alex");
+accounting.addEmployee("Joe");
+// accounting.employees[2] = "Anna";
 
-const person = {
-    name: "Myatmin Aung",
-    age: 21,
-};
-
-const copiedPerson = { ...person };
-console.log(copiedPerson);
+accounting.printEmployeeInfo();
