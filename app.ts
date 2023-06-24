@@ -1,13 +1,15 @@
 class Department {
+    private readonly id: string;
     public name: string;
     private employees: string[] = [];
 
-    constructor(n: string) {
+    constructor(id: string, n: string) {
+        this.id = id;
         this.name = n;
     }
 
     describe(this: Department) {
-        console.log("Department: " + this.name);
+        console.log(`Department (${this.id}: ${this.name})`);
     }
 
     addEmployee(employee: string) {
@@ -20,11 +22,36 @@ class Department {
     }
 }
 
-const accounting = new Department("Accounting");
-accounting.describe();
+class ITDepartment extends Department {
+    admins: string[];
+    reports: string[];
 
-accounting.addEmployee("Alex");
-accounting.addEmployee("Joe");
-// accounting.employees[2] = "Anna";
+    constructor(id: string, admins: string[], reports: string[]) {
+        super(id, "IT");
+        this.admins = admins;
+        this.reports = reports;
+    }
 
-accounting.printEmployeeInfo();
+    addReport(text: string) {
+        this.reports.push(text);
+    }
+
+    getReports() {
+        console.log(this.reports);
+    }
+}
+
+const it = new ITDepartment("D-1", ["Alex", "Joe"], []);
+it.describe();
+
+console.log(it);
+
+it.addEmployee("Alex");
+it.addEmployee("Joe");
+
+it.printEmployeeInfo();
+
+it.addReport("this is report one");
+it.addReport("this is report two");
+
+it.getReports();
