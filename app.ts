@@ -28,6 +28,7 @@ class ITDepartment extends Department {
     admins: string[];
     reports: string[];
     private lastReport: string;
+    private static instance: ITDepartment;
 
     get mostRecentReport() {
         if (this.lastReport) {
@@ -43,11 +44,19 @@ class ITDepartment extends Department {
         this.addReport(value);
     }
 
-    constructor(id: string, admins: string[], reports: string[]) {
+    private constructor(id: string, admins: string[], reports: string[]) {
         super(id, "IT");
         this.admins = admins;
         this.reports = reports;
         this.lastReport = reports[0];
+    }
+
+    static getInstance() {
+        if (ITDepartment.instance) {
+            return this.instance;
+        }
+        this.instance = new ITDepartment("D-1", ["Alex", "Joe"], []);
+        return this.instance;
     }
 
     describe() {
@@ -74,10 +83,13 @@ class ITDepartment extends Department {
 const newEmployee = Department.createEmployee("John");
 console.log(newEmployee);
 
-const it = new ITDepartment("D-1", ["Alex", "Joe"], []);
-it.describe();
+// const it = new ITDepartment("D-1", ["Alex", "Joe"], []);
+const it = ITDepartment.getInstance();
+const it2 = ITDepartment.getInstance();
+// it.describe();
 
 console.log(it);
+console.log(it2);
 
 it.addEmployee("Alex");
 it.addEmployee("Joe");
@@ -88,6 +100,6 @@ it.addEmployee("Michael");
 it.mostRecentReport = "Something went wrong.";
 it.addReport("this is report one");
 it.addReport("this is report two");
-console.log(it.mostRecentReport);
+// console.log(it.mostRecentReport);
 
 // it.getReports();
